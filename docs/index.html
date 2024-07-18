@@ -1,12 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boost Your NeRF: A Model-Agnostic Mixture of Experts Framework for High Quality and Efficient Rendering</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boost Your NeRF </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-    <h1>Boost Your NeRF: A Model-Agnostic Mixture of Experts Framework for High Quality and Efficient Rendering</h1>
-    <h2>Project page and code coming soon!</h2>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Boost Your NeRF: A Model-Agnostic Mixture of Experts Framework for High Quality and Efficient Rendering</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Francesco Di Sario</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Riccardo Renzulli</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Enzo Tartaglione</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Marco Grangetto</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Turin</span>
+            <span class="author-block"><sup>2</sup>LTCI, Télécom Paris, Institut Polytechnique de Paris</span>
+
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://www.arxiv.org/abs/2407.10389"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.arxiv.org/abs/2407.10389"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/EIDOSLAB/boost-your-nerf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Since the introduction of NeRFs, considerable attention has
+            been focused on improving their training and inference times, leading to
+            the development of Fast-NeRFs models. Despite demonstrating impressive rendering speed and quality, the rapid convergence of such models
+            poses challenges for further improving reconstruction quality. Common
+            strategies to improve rendering quality involves augmenting model parameters or increasing the number of sampled points. However, these
+            computationally intensive approaches encounter limitations in achieving significant quality enhancements. This study introduces a model-agnostic
+            framework inspired by Sparsely-Gated Mixture of Experts to enhance rendering quality without escalating computational complexity. Our approach enables specialization in rendering different scene components by
+            employing a mixture of experts with varying resolutions. We present a
+            novel gate formulation designed to maximize expert capabilities and propose a resolution-based routing technique to effectively induce sparsity
+            and decompose scenes. Our work significantly improves reconstruction
+            quality while maintaining competitive performance
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <img src="static/images/architettura.png">
+      <h2 class="subtitle has-text-centered">
+        <br>
+        <span class="dnerf">Boost Your NeRF</span> framework. A density field is used to compute density values for sampled points along
+        a ray. A filtering step discards low-density points, routed through gating network G
+        for expert assignment. Top-K experts compute radiance and density, aggregating and
+        weighting these values by the corresponding gating probability to get the final values
+        cf and σf . Volume rendering equation yields pixel colors, and joint optimization refines
+        our resolution-weighted auxiliary loss, allowing for high-quality and efficient rendering.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Naive Methods are Limited and Inefficient</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          
+          <div class="column is-4 has-text-centered">
+            <img src="./static/images/intro_res.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Increase Resolution</p>
+          </div>
+
+            <div class="column is-4 has-text-centered">
+              <img src="./static/images/intro_mlp.png"
+                   class="interpolation-image"
+                   alt="Interpolate start reference image."/>
+              <p>Increase MLP size</p>
+            </div>
+
+
+          <div class="column is-4 has-text-centered">
+            <img src="./static/images/intro_stepsize.png"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">Sample more points along the ray</p>
+          </div>
+
+        </div>
+        <br/>
+
+        <p> Typical <i>naive</i> approaches to enhance the reconstruction quality of these
+          models include:</p>
+        
+            <li>Increasing the parameters and resolution of the used data structures (e.g.,
+              voxel grid, hash grid, etc.).</li>
+            <li>Increasing the number of parameters in the neural network or the order of
+                spherical harmonics</li>
+            <li>Increasing the number of sampled points per ray.</li>
+
+      
+          <br>
+          <p>However the (marginal) increase in reconstruction quality results in a significant increase in computational costs. 
+            <!-- In the first approach, increasing
+            the resolution can lead to a significant improvement in the reconstruction quality,
+            but a plateau is reached beyond which overfitting occurs, and reconstruction
+            quality degrades. Augmenting the number of parameters in the neural network
+            is another solution. However, as the neural network grows in depth and width, it
+            tends towards a fully implicit model, deviating from the principles of fast models
+            (limiting the neural part as much as possible - or even removing it altogether). Increasing the
+            number of sampled points per ray can marginally improve reconstruction quality
+            further but at a significant increase in computational complexity. In fact, the
+            higher the number of sampled rays, the higher forward passes through a neural
+            network are needed. -->
+          </p>
+
+
+
+        <br>
+        <h3 class="title is-4">Results</h3>
+        <div class="content has-text-justified">
+          <p>
+            Our methods can overcome these limitations, while being model-agnostic by design. 
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="static/images/results.png">
+        </div>
+        
+        <br>
+
+
+        <h3 class="title is-4">Scene Decomposition</h3>
+        <div class="content has-text-justified">
+          <p>
+            Our method allows for a frequency-based scene decomposition, where high-res models render complex parts of the scene; whereas low-res models render low-frequency parts. 
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="static/images/partials.png">
+        </div>
+      </div>
+
+    </div>
+    
+
+    <br>
+
+
+    <h3 class="title is-4">High-Quality Rendering</h3>
+    <div class="content has-text-justified">
+      <p>
+        Our method
+        ensures superior reconstruction quality compared to the baselines, effectively
+        reproducing sharper details while reducing noise on texture-less spots.      </p>
+    </div>
+    <div class="content has-text-centered">
+      <img src="static/images/quality.png">
+    </div>
+  </div>
+
+
+
+  </div>
+</section>
+
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
