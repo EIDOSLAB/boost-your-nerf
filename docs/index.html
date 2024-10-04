@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+        content="">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boost Your NeRF </title>
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/icon.png">
+  <link rel="icon" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -146,24 +146,7 @@
 </section>
 
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
 
-
-      <img src="static/images/architettura.png">
-      <h2 class="subtitle has-text-centered">
-        <br>
-        <span class="dnerf">Boost Your NeRF</span> framework. We first train <i>M</i> models at different resolutions. From them, we distill a small density field, 
-        which is used to compute density values for sampled points along a ray and to discard points in areas with negligible density. For each of these points, 
-        a gating function computes a probability score, indicating the likelihood of routing the point to each expert. We route each point only to the Top-K (with K equals to 1 or 2) 
-        experts, which compute radiance and density. We then aggregate and weight these values by the corresponding gating probability to obtain the final color and density of the point. 
-        Please note how our framework is model-agnostic, treating models as black boxes (we deliver them input, i.e., a point in space, and obtain density and color).
-        The volume rendering equation yields pixel colors, and joint optimization refines our resolution-weighted auxiliary loss, enabling high-quality and efficient rendering.
-      </h2>
-    </div>
-  </div>
-</section>
 
 
 
@@ -232,11 +215,49 @@
             higher the number of sampled rays, the higher forward passes through a neural
             network are needed. -->
           </p>
-
+          <br>
+          <h3 class="title is-4 has-text-centered">Can we increase quality of rendering without escalating computational costs?</h3>
 
 
         <br>
-        <h3 class="title is-4">Results</h3>
+
+        <h3 class="title is-3 has-text-centered mt-5">Contributions</h3>
+        <div class="content has-text-justified">
+          <ol>
+            <li>A <strong>model-agnostic framework using Sparse Mixture of Experts</strong> models at different resolutions, enhancing rendering quality while keeping training and inference times competitive.</li>
+            <li>A <strong>novel Fast-NeRF inspired-gate formulation</strong>, which treats each model as a black-box, maximizing MoE capabilities.</li>
+            <li>A <strong>new resolution-based routing technique </strong> that encourages token assignment to low-resolution models, increasing sparsity in high-resolution models and decomposing scenes by frequency.</li>
+          </ol>
+        </div>
+
+
+
+        <section class="hero teaser">
+          <h3 class="title is-3 has-text-centered mt-5">Method</h3>
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+        
+        
+              <img src="static/images/architettura.png">
+              <h2 class="subtitle has-text-centered">
+                <br>
+                <span class="dnerf">Boost Your NeRF</span> framework. We first train <i>M</i> models at different resolutions. From them, we distill a small density field, 
+                which is used to compute density values for sampled points along a ray and to discard points in areas with negligible density. For each of these points, 
+                a gating function computes a probability score, indicating the likelihood of routing the point to each expert. We route each point only to the Top-K (with K equals to 1 or 2) 
+                experts, which compute radiance and density. We then aggregate and weight these values by the corresponding gating probability to obtain the final color and density of the point. 
+                Please note how our framework is model-agnostic, treating models as black boxes (we deliver them input, i.e., a point in space, and obtain density and color).
+                The volume rendering equation yields pixel colors, and joint optimization refines our resolution-weighted auxiliary loss, enabling high-quality and efficient rendering.
+              </h2>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+        <h3 class="title is-3 has-text-centered mt-5"  >Results</h3>
         <div class="content has-text-justified">
           <p>
             Our methods can overcome these limitations, while being model-agnostic by design. Although Top-1 already achieves state-of-the-art performance, 
@@ -251,7 +272,7 @@
         <br>
 
 
-        <h3 class="title is-4">Scene Decomposition</h3>
+        <h3 class="title is-3 has-text-centered mt-5">Scene Decomposition</h3>
         <div class="content has-text-justified">
           <p>
             Our method allows for a frequency-based scene decomposition, where high-res models render complex parts of the scene; whereas low-res models render low-frequency parts. The output of the gate
@@ -308,7 +329,7 @@
     <br>
 
 
-    <h3 class="title is-4">High-Quality Rendering</h3>
+    <h3 class="title is-3 has-text-centered mt-5">High-Quality Rendering</h3>
     <div class="content has-text-justified">
       <p>
         Our method
@@ -332,7 +353,7 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <h2 class="title is-3 has-text-centered">Ablations</h2>
+    <h2 class="title is-3 has-text-centered mt-5">Ablations</h2>
     <div class="columns is-centered">
 
       <div class="column is-full-width">
