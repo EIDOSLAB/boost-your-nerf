@@ -7,6 +7,8 @@
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boost Your NeRF </title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./static/css/bootstrap-4.4.1.css">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -22,24 +24,24 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/icon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-</head>
+  
+  <link rel="stylesheet" href="./static/css/dics.original.css">
+  <script src="./static/js/event_handler.js"></script>
+  <script src="./static/js/dics.original.js"></script>
+  <script src="./static/js/video-comparison.js"></script>
 <body>
 
 
@@ -81,7 +83,7 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://www.arxiv.org/abs/2407.10389"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -89,7 +91,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Video Link. -->
 
               <!-- Code Link. -->
@@ -115,8 +117,11 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+
+    <img src="./static/images/trailer.gif" style="margin-bottom: 80px;">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
+
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
@@ -144,19 +149,17 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video> -->
+
+
       <img src="static/images/architettura.png">
       <h2 class="subtitle has-text-centered">
         <br>
-        <span class="dnerf">Boost Your NeRF</span> framework. A density field is used to compute density values for sampled points along
-        a ray. A filtering step discards low-density points, routed through gating network G
-        for expert assignment. Top-K experts compute radiance and density, aggregating and
-        weighting these values by the corresponding gating probability to get the final values
-        cf and σf . Volume rendering equation yields pixel colors, and joint optimization refines
-        our resolution-weighted auxiliary loss, allowing for high-quality and efficient rendering.
+        <span class="dnerf">Boost Your NeRF</span> framework. We first train <i>M</i> models at different resolutions. From them, we distill a small density field, 
+        which is used to compute density values for sampled points along a ray and to discard points in areas with negligible density. For each of these points, 
+        a gating function computes a probability score, indicating the likelihood of routing the point to each expert. We route each point only to the Top-K (with K equals to 1 or 2) 
+        experts, which compute radiance and density. We then aggregate and weight these values by the corresponding gating probability to obtain the final color and density of the point. 
+        Please note how our framework is model-agnostic, treating models as black boxes (we deliver them input, i.e., a point in space, and obtain density and color).
+        The volume rendering equation yields pixel colors, and joint optimization refines our resolution-weighted auxiliary loss, enabling high-quality and efficient rendering.
       </h2>
     </div>
   </div>
@@ -204,14 +207,15 @@
         </div>
         <br/>
 
-        <p> Typical <i>naive</i> approaches to enhance the reconstruction quality of these
+        <p> Typical <i>naive</i> approaches to enhance the reconstruction quality of Fast-NeRFs
           models include:</p>
         
             <li>Increasing the parameters and resolution of the used data structures (e.g.,
-              voxel grid, hash grid, etc.).</li>
-            <li>Increasing the number of parameters in the neural network or the order of
-                spherical harmonics</li>
+              voxel grid, hash grid, etc.).
+            <li>Increasing the number of parameters in the neural network or the order of SHs
             <li>Increasing the number of sampled points per ray.</li>
+
+
 
       
           <br>
@@ -235,10 +239,12 @@
         <h3 class="title is-4">Results</h3>
         <div class="content has-text-justified">
           <p>
-            Our methods can overcome these limitations, while being model-agnostic by design. 
+            Our methods can overcome these limitations, while being model-agnostic by design. Although Top-1 already achieves state-of-the-art performance, 
+            Top-2 strikes an optimal balance between the efficiency of the Top-1 approach and the quality of the Ensemble method, where all experts are used for every input.
           </p>
         </div>
         <div class="content has-text-centered">
+          <img src="static/images/quantitative-results.png" style="margin-bottom: 50px;">
           <img src="static/images/results.png">
         </div>
         
@@ -248,12 +254,52 @@
         <h3 class="title is-4">Scene Decomposition</h3>
         <div class="content has-text-justified">
           <p>
-            Our method allows for a frequency-based scene decomposition, where high-res models render complex parts of the scene; whereas low-res models render low-frequency parts. 
+            Our method allows for a frequency-based scene decomposition, where high-res models render complex parts of the scene; whereas low-res models render low-frequency parts. The output of the gate
+             module for each model is visualized on the left; on the right, the rendered part of the scene for each model is shown. Outputs are arranged in increasing order of resolution.
           </p>
         </div>
         <div class="content has-text-centered">
           <img src="static/images/partials.png">
         </div>
+
+        <div class="container">
+          <div class="content has-text-centered">
+            <ul class="nav nav-tabs nav-fill nav-justified" id="object-scale-recon">
+                <li class="nav-item">
+                  <a class="nav-link active" onclick="objectSceneEvent(0)">Lego</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(1)">Mic</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(2)">Ship</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(3)">Hotdog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(4)">Ficus</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(5)">Materials</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(6)">Chair</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" onclick="objectSceneEvent(7)">Drums</a>
+                </li>
+            </ul>
+            <div class="b-dics" style="font-weight: 600;">
+                <img src="./static/images/lego/output_0.gif" alt="Low Res">
+                <img src="./static/images/lego/output_1.gif" alt="Middle Res">
+                <img src="./static/images/lego/output_2.gif" alt="High Res">
+    
+            </div>
+          </div>
+        </div>
+    
+
       </div>
 
     </div>
@@ -272,15 +318,41 @@
     <div class="content has-text-centered">
       <img src="static/images/quality.png">
     </div>
+
+
+
+
+
   </div>
-
-
-
   </div>
 </section>
 
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Ablations</h2>
+    <div class="columns is-centered">
+
+      <div class="column is-full-width">
+
+        <strong>Gate Resolution and Gate Type</strong>
+        <p>Our novel gate design is lightweight (comparable to a linear gate) but achieves way superior quality. Furthermore, it achieves good results with a very-low resolution grid.
+        </p>
+        <img src="./static/images/abl1.png" style="padding: 25px;">
+      </div>
+
+      <div class="column is-full-width">
+      <strong>Why Top-2?</strong>
+      Top-2 strikes an good trade-off between quality and computational costs. 
+      <img src="./static/images/abl2.png">
+    </div>
+
+
+    </div>
+</div>  
+</section>
 
 <!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -295,23 +367,15 @@
 </section> -->
 
 
+
 <footer class="footer">
   <div class="container">
-
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the template of this website.
           </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
           </p>
         </div>
       </div>
