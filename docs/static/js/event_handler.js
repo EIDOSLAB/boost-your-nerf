@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', domReady);
         function objectSceneEvent(idx) {
             let dics = document.querySelectorAll('.b-dics')[0]
             let sections = dics.getElementsByClassName('b-dics__section')
-            let imagesLength = 3
+            let imagesLength = 5
             for (let i = 0; i < imagesLength; i++) {
                 let image = sections[i].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0]
                 switch (idx) {
@@ -49,13 +49,22 @@ document.addEventListener('DOMContentLoaded', domReady);
                 }
                 switch (i) {
                     case 0:
-                        image.src = image.src + '/output_0.gif';
+                        image.src = image.src + '/out_0.gif';
                         break;
                     case 1:
-                        image.src = image.src + '/output_1.gif';
+                        image.src = image.src + '/out_1.gif';
                         break;
                     case 2:
-                        image.src = image.src + '/output_2.gif';
+                        image.src = image.src + '/out_2.gif';
+                        break;
+                    case 3:
+                        image.src = image.src + '/out_3.gif';
+                        break;
+                    case 4:
+                        image.src = image.src + '/out_4.gif';
+                        break;
+                    case 5:
+                        image.src = image.src + '/out_5.gif';
                         break;
                 }
             }
