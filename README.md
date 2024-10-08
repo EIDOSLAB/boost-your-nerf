@@ -4,7 +4,7 @@ Welcome to the **official code repository** for our paper _"Boost Your NeRF: A M
 
 Our framework offers **state-of-the-art performance** by combining multiple experts in a model-agnostic manner to enhance the quality and efficiency of NeRF-based rendering.
 
-![Teaser Image 1](method.png)  
+![Teaser Image 1](method.jpg)  
 <!-- ![Teaser Image 2](path_to_image2) -->
 
 ---
