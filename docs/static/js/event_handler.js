@@ -49,22 +49,22 @@ document.addEventListener('DOMContentLoaded', domReady);
                 }
                 switch (i) {
                     case 0:
-                        image.src = image.src + '/out_0.gif';
+                        image.src = image.src + '/out_cmp_0.gif';
                         break;
                     case 1:
-                        image.src = image.src + '/out_1.gif';
+                        image.src = image.src + '/out_cmp_1.gif';
                         break;
                     case 2:
-                        image.src = image.src + '/out_2.gif';
+                        image.src = image.src + '/out_cmp_2.gif';
                         break;
                     case 3:
-                        image.src = image.src + '/out_3.gif';
+                        image.src = image.src + '/out_cmp_3.gif';
                         break;
                     case 4:
-                        image.src = image.src + '/out_4.gif';
+                        image.src = image.src + '/out_cmp_4.gif';
                         break;
                     case 5:
-                        image.src = image.src + '/out_5.gif';
+                        image.src = image.src + '/out_cmp_5.gif';
                         break;
                 }
             }
